@@ -8,11 +8,12 @@ type NoteDetailsProps = {
 
 const NoteDetails = async ({ params }: NoteDetailsProps) => {
   const queryClient = new QueryClient();
-  const response = await params;
+  const { id } = await params;
+  const idNum = Number(id);
 
   await queryClient.prefetchQuery({
-    queryKey: ['note', response.id],
-    queryFn: () => fetchNoteById(response.id),
+    queryKey: ['note', id],
+    queryFn: () => fetchNoteById(idNum),
   });
 
   return (

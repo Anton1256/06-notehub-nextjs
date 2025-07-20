@@ -26,7 +26,7 @@ export const fetchNotes = async (search: string, page: number): Promise<NotesRes
   return data;
 };
 
-export const fetchNoteById = async (id: string): Promise<Note> => {
+export const fetchNoteById = async (id: string | number): Promise<Note> => {
   const { data } = await axios.get<Note>(`${API_URL}/${id}`, {
     headers: { Authorization: `Bearer ${API_KEY}` },
   });
